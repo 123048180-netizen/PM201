@@ -1,7 +1,19 @@
 const prompt = require("prompt-sync")();
 
-// Exportamos el arreglo de productos
-import { productos } from './cocina.js';
+// arreglo de productos
+let productos = [
+
+    { id: 1, nombre: "Expresso", precio: 55 },
+
+    { id: 2, nombre: "Oatmeal Cookie", precio: 40 },
+
+    { id: 3, nombre: "Tea Green", precio: 55 },
+
+    { id: 4, nombre: "Cheese Salad Sandwich", precio: 55 },
+
+    { id: 5, nombre: "Chocolate Cupcake", precio: 35 }
+
+];
 let pedidos = [];
 
 function agregarPedido(idProducto, cantidad) {
@@ -57,11 +69,9 @@ let opcion = 0;
 while (opcion !== 4) {
 
     console.log(`
-================================
         CAFETERÍA
---------------------------------
 
-1. Ver productos
+1. Ver Menu
 2. Agregar pedido
 3. Ver pedidos
 4. Salir
@@ -75,19 +85,17 @@ while (opcion !== 4) {
 
         case 1:
 
-            console.log(`
-******** MENÚ ********
-`);
+            console.log(`MENÚ`);
 
             productos.forEach(producto => {
 
                 console.log(`
-ID: ${producto.id}
+                            ID: ${producto.id}
 
-Producto: ${producto.nombre}
+                            Producto: ${producto.nombre}
 
-Precio: $${producto.precio}
-`);
+                            Precio: $${producto.precio}
+                            `);
             });
 
         break;
@@ -108,9 +116,7 @@ Precio: $${producto.precio}
 
         case 3:
 
-            console.log(`
-*** LISTA DE PEDIDOS ***
-`);
+            console.log(`LISTA DE PEDIDOS`);
 
             if (pedidos.length === 0) {
 
@@ -125,16 +131,12 @@ Precio: $${producto.precio}
                     const { producto, precio, cantidad, subtotal } = pedido;
 
                     console.log(`
-Pedido #${index + 1}
-
-Producto: ${producto}
-
-Precio unitario: $${precio}
-
-Cantidad: ${cantidad}
-
-Subtotal: $${subtotal}
-`);
+                                Pedido #${index + 1}
+                                Producto: ${producto}
+                                Precio unitario: $${precio}
+                                Cantidad: ${cantidad}
+                                Subtotal: $${subtotal}
+                                `);
                 });
 
                 // Subtotal general usando reduce()
@@ -149,6 +151,12 @@ Subtotal: $${subtotal}
 
                 // Total final
                 let totalFinal = subtotalGeneral + iva;
+
+                console.log(`
+                        Subtotal: $${subtotalGeneral}
+                        IVA (16%): $${iva}
+                        TOTAL A PAGAR: $${totalFinal}
+                        `);
             }
 
         break;
