@@ -3,7 +3,7 @@ const prompt = require("prompt-sync")();
 const cliente = require("./cliente");
 const cocina = require("./cocina");
 
-// Obtenemos los productos desde cocina cn el arreglo de productos
+// Obtenemos los productos desde cocina
 let productos = cocina.productos;
 
 // llamamos el arreglo donde estan los pedidos del cliente
@@ -12,39 +12,29 @@ let pedidos = cliente.pedidos || [];
 // Para guardar el total acumulado
 let totalAcumulado = 0;
 
-function agregarPedido(idProducto, cantidad){
+function agregarPedido(idProducto, cantidad, callback){
 
-    // Primero buscamos producto
     let productoEncontrado = productos.find(
-        (producto,index) => index === idProducto
+        (producto, index) => index === idProducto
     );
 
-    // Condicion para ver que exista 
     if(productoEncontrado){
 
-        let subtotal =
-            productoEncontrado.precio * cantidad;
+        let subtotal = productoEncontrado.precio * cantidad;
 
         let pedido = {
-
             producto: productoEncontrado.nombre,
-
             precio: productoEncontrado.precio,
-
             cantidad: cantidad,
-
             subtotal: subtotal
         };
 
-        // Guardamos el nuevo pedido en el arreglo
+        // Caja registra y acumula
         pedidos.push(pedido);
-
-        // Acumulamos el total general
         totalAcumulado += subtotal;
 
         console.log(`
-
-*******TU PEDIDO FUE AGREGADO *******
+*******PEDIDO REGISTRADO EN CAJA*******
 
 Producto: ${pedido.producto}
 
@@ -56,16 +46,23 @@ Subtotal: $${pedido.subtotal}
 
 TOTAL ACUMULADO: $${totalAcumulado}
 `);
+
+        // Simulamos si el pedido se completa o se cancela
+        let resultado = Math.random() > 0.3
+            ? "pedido listo"
+            : "pedido cancelado";
+
+        // Usamos el callback para notificar
+        callback(resultado);
     }
 
     else{
 
-        console.log("Producto no encontrado");
+        callback("Producto no encontrado");
     }
 }
 
-//uso del callnack para notificar el estado del pedido
-
+// Callback para notificar el estado del pedido
 function notificar(estado){
 
     console.log(`
@@ -75,7 +72,6 @@ ${estado}
 `);
 }
 
-//funciones de caja
 function menuCaja(){
 
     let opcion = 0;
@@ -96,8 +92,6 @@ function menuCaja(){
         );
 
         switch(opcion){
-
-           //MENU DE CAJA
 
             case 1:
 
@@ -121,8 +115,6 @@ function menuCaja(){
 
             break;
 
-            //Para agregar los pedidos
-
             case 2:
 
                 console.table(
@@ -145,11 +137,10 @@ function menuCaja(){
                     prompt("Cantidad: ")
                 );
 
-                agregarPedido(id,cantidad);
+                // Pasamos notificar como callback
+                agregarPedido(id, cantidad, notificar);
 
             break;
-
-            //VER TICKET
 
             case 3:
 
@@ -157,7 +148,6 @@ function menuCaja(){
 ****** TICKET ******
 `);
 
-                // Si no hay pedidos
                 if(pedidos.length === 0){
 
                     console.log(
@@ -167,7 +157,6 @@ function menuCaja(){
                     break;
                 }
 
-                // Mostramos los pedidos con el arreglo
                 pedidos.forEach((pedido,index)=>{
 
                     const {
@@ -190,7 +179,6 @@ Subtotal: $${subtotal}
 `);
                 });
 
-                // Subtotal general
                 let subtotalGeneral = pedidos.reduce(
 
                     (acumulador,pedido)=>
@@ -200,10 +188,8 @@ Subtotal: $${subtotal}
                     0
                 );
 
-                // IVA GENESARL
                 let iva = subtotalGeneral * 0.16;
 
-                // Total
                 let totalFinal =
                     subtotalGeneral + iva;
 
@@ -219,12 +205,9 @@ TOTAL A PAGAR: $${totalFinal.toFixed(2)}
 ================================
 `);
 
-                // otro callback
-                notificar("Pedido listo");
+                notificar("Ticket generado correctamente");
 
             break;
-
-            //SALIMSO
 
             case 4:
 
@@ -242,8 +225,6 @@ TOTAL A PAGAR: $${totalFinal.toFixed(2)}
         }
     }
 }
-
-
 
 module.exports = {
 
