@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { View, Text, Button, StyleSheet, ImageBackground } from "react-native-web";
 //Con destructuración
 import React, {useState} from "react";
@@ -46,12 +47,52 @@ const estilos = StyleSheet.create({
 
 
 /*export const Perfil = (props) => {
+=======
+
+//PERFIL USANDO PROPS
+import { View, Text } from "react-native-web";
+
+
+export const Perfil = (props) => {
+>>>>>>> Stashed changes
     return(
         <View>
             <Text>{props.nombre}</Text>
             <Text>{props.carrera}</Text>
             <Text>{props.materia}</Text>
+<<<<<<< Updated upstream
             <Text>{props.cuatri}</Text>
         </View>
 );
 }*/
+=======
+            <Text>{props.cuatrimestre}</Text>
+
+        </View>
+    
+);
+}
+/*PERFIL usando destructuración 
+import { View, Text, Button } from "react-native-web";
+import React, {useState} from 'react';
+export const Perfil = ({nombre, carrera, materia, cuatri}) => {
+    const [mostrar, setMostrar] = useState(false);
+    return(
+        <View>
+            <Text>{nombre}</Text>
+
+            {mostrar &&
+            <>
+            <Text>{carrera}</Text>
+            <Text>{materia}</Text>
+            <Text>{cuatri}</Text>
+            </>
+            }
+
+            <Button title ="Ver Perfil" onPress={ ()=> setMostrar(!mostrar)}></Button>
+        </View>
+    
+);
+}
+//Debe seguir funcionando igual que con props*/
+>>>>>>> Stashed changes
