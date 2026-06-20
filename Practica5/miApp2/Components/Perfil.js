@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import { View, Text, Button, StyleSheet, ImageBackground } from "react-native-web";
 //Con destructuración
 import React, {useState} from "react";
@@ -64,14 +63,14 @@ export const Perfil = (props) => {
             <Text>{props.cuatri}</Text>
         </View>
 );
-}*/
-=======
+}
+
             <Text>{props.cuatrimestre}</Text>
 
         </View>
     
 );
-}
+}*/
 /*PERFIL usando destructuración 
 import { View, Text, Button } from "react-native-web";
 import React, {useState} from 'react';
@@ -95,4 +94,3 @@ export const Perfil = ({nombre, carrera, materia, cuatri}) => {
 );
 }
 //Debe seguir funcionando igual que con props*/
->>>>>>> Stashed changes

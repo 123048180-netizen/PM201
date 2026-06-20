@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import React, {useState} from "react";
 import TarjetasScreen from './TarjetasScreen';
 import Componente1Screen from './Componente1Screen';
-
+import Componente2 from './Componente2'
 
 /*Zona 2; Es donde estará el main y toda la parte de la vista */
 export default function App() {
@@ -14,13 +14,16 @@ export default function App() {
                 return <TarjetasScreen />;
             case "Componente1":
                 return <Componente1Screen />;
+            case "Componente2":
+                return <Componente2/>
             case "menu":
             default:
   return (
-   <View>
-    <Text>Aquí va la primer Practica de Componentes Nativos</Text>
-    <Button title="practica Tarjetas" onPress={() => setScreen("Tarjetas")}></Button>
+   <View style={styles.container}>
+    <Text>Aquí va el menú</Text>
+    <Button title="practica Tarjetas"onPress={() => setScreen("Tarjetas") }></Button>
     <Button title="practica Componente1" onPress={() => setScreen("Componente1")}></Button>
+    <Button title="practica Componente2" onPress={() => setScreen("Componente2")}></Button>
 
    </View>
   ); //return
@@ -30,10 +33,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fabef1',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     flexDirection: 'column',
+    padding : 2,
+    margin: 2
   },
+  botones:{
+    backgroundColor: '#f705d3',
+    margin: 2,
+    padding: 2,
+  }
   
 });
