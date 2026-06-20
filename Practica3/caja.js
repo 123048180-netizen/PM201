@@ -171,4 +171,4 @@ while (opcion !== 4) {
 
             console.log("Solo opciones del 1 al 4");
     }
-}
+} 

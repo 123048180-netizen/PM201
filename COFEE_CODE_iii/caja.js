@@ -143,20 +143,13 @@ function menuCaja(){
             break;
 
             case 3:
-
-                console.log(`
-****** TICKET ******
-`);
-
+                console.log(`****** TICKET ******`);
                 if(pedidos.length === 0){
-
                     console.log(
                         "No hay pedidos registrados"
                     );
-
                     break;
                 }
-
                 pedidos.forEach((pedido,index)=>{
 
                     const {
@@ -165,26 +158,17 @@ function menuCaja(){
                         cantidad,
                         subtotal
                     } = pedido;
-
                     console.log(`
 Pedido #${index+1}
-
 Producto: ${producto}
-
 Precio unitario: $${precio}
-
 Cantidad: ${cantidad}
-
 Subtotal: $${subtotal}
 `);
                 });
-
                 let subtotalGeneral = pedidos.reduce(
-
                     (acumulador,pedido)=>
-
                     acumulador + pedido.subtotal,
-
                     0
                 );
 
