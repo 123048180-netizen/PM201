@@ -5,6 +5,8 @@ import React, {useState} from "react";
 import TarjetasScreen from './TarjetasScreen';
 import Componente1Screen from './Componente1Screen';
 import Componente2 from './Componente2'
+import ComponentePressed from './ComponentePressed'
+import ComponenteSwitch from './ComponenteSwitch'
 
 /*Zona 2; Es donde estará el main y toda la parte de la vista */
 export default function App() {
@@ -16,6 +18,10 @@ export default function App() {
                 return <Componente1Screen />;
             case "Componente2":
                 return <Componente2/>
+            case "ComponentePressed":
+                return <ComponentePressed/>
+            case "ComponenteSwitch":
+                return <ComponenteSwitch/>
             case "menu":
             default:
   return (
@@ -24,7 +30,8 @@ export default function App() {
     <Button title="practica Tarjetas"onPress={() => setScreen("Tarjetas") }></Button>
     <Button title="practica Componente1" onPress={() => setScreen("Componente1")}></Button>
     <Button title="practica Componente2" onPress={() => setScreen("Componente2")}></Button>
-
+    <Button title="practica Componente2.1" onPress={() => setScreen("ComponentePressed")}></Button>
+    <Button title="practica Componente2.2" onPress={() => setScreen("ComponenteSwitch")}></Button>
    </View>
   ); //return
 } //Switch
