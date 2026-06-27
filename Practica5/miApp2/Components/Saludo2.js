@@ -1,4 +1,4 @@
-import { View, Button, Text, Image } from "react-native-web";
+import { View, Button, Text, Image } from "react-native";
 
 
 export const Saludo2 = () => {
