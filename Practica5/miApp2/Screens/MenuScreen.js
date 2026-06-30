@@ -9,6 +9,8 @@ import ComponentePressed from './ComponentePressed'
 import ComponenteSwitch from './ComponenteSwitch'
 import Componente3 from './Componente3'
 import Componente_Alert from './Componente_Alert'
+import SectionList from './SectionList'
+import FlatListScreen from './FlatListScreen';
 
 /*Zona 2; Es donde estará el main y toda la parte de la vista */
 export default function App() {
@@ -28,6 +30,10 @@ export default function App() {
                 return <Componente3/>
             case "Componente_Alert":
                 return <Componente_Alert/>
+            case "FlatListScreen":
+                return <FlatListScreen/>
+                case "SectionList":
+                return <SectionList/>
             case "menu":
             default:
   return (
@@ -40,6 +46,8 @@ export default function App() {
     <Button title="practica Componente2.2" onPress={() => setScreen("ComponenteSwitch")}></Button>
     <Button title="practica Componente2.1" onPress={() => setScreen("Componente3")}></Button>
     <Button title="practica Componente2.2" onPress={() => setScreen("Componente_Alert")}></Button>
+    <Button title="practica Componente FlatList" onPress={() => setScreen("FlatListScreen")}></Button>
+    <Button title="practica Componente SectionList" onPress={() => setScreen("SectionList")}></Button>
    </View>
   ); //return
 } //Switch
