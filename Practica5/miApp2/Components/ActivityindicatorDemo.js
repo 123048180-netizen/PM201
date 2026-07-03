@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-
+//checar la funcion
 export default function ActivityIndicatorDemo() {
   const [loading, setLoading] = useState(false);
 

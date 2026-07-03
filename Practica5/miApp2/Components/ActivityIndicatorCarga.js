@@ -1,11 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  ActivityIndicator,
-  Button,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { ActivityIndicator, Button, StyleSheet, Text, View,} from 'react-native';
 
 export default function ActivityIndicatorCarga() {
   const [loading, setLoading] = useState(false);

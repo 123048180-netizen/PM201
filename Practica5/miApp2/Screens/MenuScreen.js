@@ -58,7 +58,7 @@ export default function App() {
         );
     }
   };
-
+//Menu
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>

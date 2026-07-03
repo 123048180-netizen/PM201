@@ -6,7 +6,7 @@ import {
   Text,
   TextInput,
 } from 'react-native';
-
+//Verificar el nombre
 export default function KeyboardAvoidingDemo() {
   const [nombre, setNombre] = useState('');
 
