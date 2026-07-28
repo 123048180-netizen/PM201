@@ -6,20 +6,17 @@ export default function ConsultaUsuariosScreen() {
   const [usuarios, setUsuarios] = useState([]);
 
 
-  const obtenerUsuarios = async() => {
-    try {
-      const respuesta = await fetch('http://localhost:5000/v1/usuarios/');
-      const datos = await respuesta.json()
-      console.log('Respuesta API', datos)
+  const obtenerUsuarios = async () => {
+  try {
+    const respuesta = await fetch('http://192.168.100.31:5000/v1/usuarios/');
+    const datos = await respuesta.json();
+    console.log('Respuesta API', datos);
 
-
-      setUsuarios(datos.usuarios);
-      
-    } catch (error) {
-      console.log("Error:", error);
-      
-    }
-  };
+    setUsuarios(datos.usuarios);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+};
 
   useEffect(() => {obtenerUsuarios();}, [])
 
